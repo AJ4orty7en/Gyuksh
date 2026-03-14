@@ -1,126 +1,207 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Our Love Story</title>
+<meta charset="UTF-8">
+<title>Our Love Space ❤️</title>
 
 <style>
 
-body{
+*{
 margin:0;
-font-family:'Segoe UI',sans-serif;
-background:linear-gradient(135deg,#ff758c,#ff7eb3);
+padding:0;
+box-sizing:border-box;
+font-family: 'Segoe UI', sans-serif;
+}
+
+body{
 height:100vh;
+background: linear-gradient(135deg,#ff6a88,#ff99ac,#c471ed,#12c2e9);
+background-size: 400% 400%;
+animation: gradient 15s ease infinite;
 display:flex;
 justify-content:center;
 align-items:center;
-color:white;
 }
 
-/* glass card */
+@keyframes gradient{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
 
-.card{
-background:rgba(255,255,255,0.15);
-backdrop-filter:blur(10px);
-padding:40px;
+.container{
+width:90%;
+max-width:1100px;
+backdrop-filter: blur(15px);
+background: rgba(255,255,255,0.15);
 border-radius:20px;
-text-align:center;
-width:500px;
-box-shadow:0 10px 30px rgba(0,0,0,0.2);
-}
-
-/* navbar */
-
-nav{
-margin-bottom:20px;
-}
-
-nav a{
-margin:0 15px;
+padding:40px;
+box-shadow:0 20px 50px rgba(0,0,0,0.3);
 color:white;
-text-decoration:none;
-font-weight:bold;
-transition:0.3s;
+text-align:center;
 }
-
-nav a:hover{
-color:#ffe0ec;
-}
-
-/* title */
 
 h1{
-font-size:42px;
+font-size:40px;
 margin-bottom:10px;
 }
 
-/* button */
+.subtitle{
+opacity:0.9;
+margin-bottom:30px;
+}
 
-.button{
-display:inline-block;
+.love-counter{
+font-size:22px;
+margin-bottom:30px;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:15px;
 margin-top:20px;
-padding:12px 25px;
-background:white;
-color:#ff4d6d;
-border-radius:30px;
-text-decoration:none;
-font-weight:bold;
+}
+
+.gallery img{
+width:100%;
+height:200px;
+object-fit:cover;
+border-radius:15px;
+transition:0.4s;
+}
+
+.gallery img:hover{
+transform:scale(1.05);
+}
+
+.message-box{
+margin-top:30px;
+}
+
+textarea{
+width:100%;
+height:80px;
+border:none;
+border-radius:10px;
+padding:10px;
+font-size:16px;
+}
+
+button{
+margin-top:10px;
+padding:10px 25px;
+border:none;
+border-radius:20px;
+background:#ff4b7d;
+color:white;
+font-size:16px;
+cursor:pointer;
 transition:0.3s;
 }
 
-.button:hover{
-transform:scale(1.1);
+button:hover{
+background:#ff2a63;
+}
+
+.messages{
+margin-top:20px;
+text-align:left;
+max-height:150px;
+overflow:auto;
+}
+
+.message{
+background:rgba(255,255,255,0.2);
+padding:10px;
+border-radius:10px;
+margin-bottom:10px;
+}
+
+.music-btn{
+position:absolute;
+top:20px;
+right:20px;
 }
 
 </style>
-
 </head>
 
 <body>
 
-<div class="card">
+<button class="music-btn" onclick="toggleMusic()">🎵 Music</button>
 
-<h1>A ❤️ B</h1>
-
-<nav>
-<a href="index.html">Home</a>
-<a href="story.html">Our Story</a>
-<a href="gallery.html">Gallery</a>
-<a href="secret.html">Secret</a>
-</nav>
-
-<p>
-A small place on the internet for our memories,
-our laughs, and everything that makes us us.
-</p>
-
-<a class="button" href="story.html">Read Our Story</a>
-
-</div>
-
-</body>
-</html>
-
-<body>
-
-<h1>A & B 💕</h1>
-
-<nav>
-<a href="index.html">Home</a>
-<a href="story.html">Our Story</a>
-<a href="gallery.html">Gallery</a>
-<a href="secret.html">Secret</a>
-</nav>
+<audio id="music" loop>
+<source src="https://cdn.pixabay.com/audio/2022/03/15/audio_2d0c1c3f7d.mp3">
+</audio>
 
 <div class="container">
-<h2>Welcome to our little world</h2>
 
-<p>
-This website is a small place for our memories,
-our laughs, and everything that makes us us ❤️
-</p>
+<h1>Akshay ❤️ Your Love</h1>
+<p class="subtitle">Our little digital love world</p>
 
-<p>Together forever.</p>
+<div class="love-counter">
+Together for <span id="days"></span> days 💖
 </div>
+
+<h2>Our Memories</h2>
+
+<div class="gallery">
+<img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2">
+<img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e">
+<img src="https://images.unsplash.com/photo-1529634895646-1f5f1cfae5d9">
+<img src="https://images.unsplash.com/photo-1529336953121-ad5a0d43d0d2">
+</div>
+
+<div class="message-box">
+
+<h2>Leave a Love Message 💌</h2>
+
+<textarea id="msg"></textarea>
+<br>
+<button onclick="addMessage()">Send</button>
+
+<div class="messages" id="messages"></div>
+
+</div>
+
+</div>
+
+<script>
+
+let startDate = new Date("2024-01-01");
+
+let today = new Date();
+let diff = today - startDate;
+let days = Math.floor(diff / (1000*60*60*24));
+
+document.getElementById("days").innerText = days;
+
+function toggleMusic(){
+let music=document.getElementById("music");
+if(music.paused){
+music.play();
+}else{
+music.pause();
+}
+}
+
+function addMessage(){
+
+let msg=document.getElementById("msg").value;
+
+if(msg.trim()=="") return;
+
+let div=document.createElement("div");
+div.className="message";
+div.innerText=msg;
+
+document.getElementById("messages").appendChild(div);
+
+document.getElementById("msg").value="";
+}
+
+</script>
 
 </body>
 </html>
