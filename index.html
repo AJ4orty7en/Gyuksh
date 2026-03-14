@@ -22,7 +22,45 @@ display:flex;
 justify-content:center;
 align-items:center;
 }
+<nav class="navbar">
+<div class="logo">❤️ Our World</div>
 
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="timeline.html">Our Story</a></li>
+<li><a href="gallery.html">Gallery</a></li>
+<li><a href="memories.html">Memories</a></li>
+<li><a href="love-letter.html">Love Letters</a></li>
+<li><a href="bucketlist.html">Bucket List</a></li>
+</ul>
+</nav>
+  .navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 40px;
+background:rgba(255,255,255,0.1);
+backdrop-filter:blur(10px);
+border-radius:15px;
+margin-bottom:30px;
+}
+
+.navbar ul{
+display:flex;
+gap:25px;
+list-style:none;
+}
+
+.navbar a{
+color:white;
+text-decoration:none;
+font-weight:500;
+transition:0.3s;
+}
+
+.navbar a:hover{
+color:#ff4b7d;
+}
 @keyframes gradient{
 0%{background-position:0% 50%;}
 50%{background-position:100% 50%;}
@@ -205,3 +243,4 @@ document.getElementById("msg").value="";
 
 </body>
 </html>
+
