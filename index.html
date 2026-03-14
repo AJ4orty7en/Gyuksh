@@ -1,32 +1,104 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Our Story ❤️</title>
+<title>Our Love Story</title>
+
 <style>
+
 body{
-font-family: Arial;
-background:#ffeef2;
-text-align:center;
+margin:0;
+font-family:'Segoe UI',sans-serif;
+background:linear-gradient(135deg,#ff758c,#ff7eb3);
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+}
+
+/* glass card */
+
+.card{
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(10px);
 padding:40px;
+border-radius:20px;
+text-align:center;
+width:500px;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* navbar */
+
+nav{
+margin-bottom:20px;
 }
 
 nav a{
-margin:15px;
+margin:0 15px;
+color:white;
 text-decoration:none;
 font-weight:bold;
-color:#ff4d6d;
+transition:0.3s;
 }
 
-.container{
+nav a:hover{
+color:#ffe0ec;
+}
+
+/* title */
+
+h1{
+font-size:42px;
+margin-bottom:10px;
+}
+
+/* button */
+
+.button{
+display:inline-block;
+margin-top:20px;
+padding:12px 25px;
 background:white;
-padding:30px;
-border-radius:15px;
-max-width:600px;
-margin:auto;
+color:#ff4d6d;
+border-radius:30px;
+text-decoration:none;
+font-weight:bold;
+transition:0.3s;
+}
+
+.button:hover{
+transform:scale(1.1);
 }
 
 </style>
+
 </head>
+
+<body>
+
+<div class="card">
+
+<h1>A ❤️ B</h1>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="story.html">Our Story</a>
+<a href="gallery.html">Gallery</a>
+<a href="secret.html">Secret</a>
+</nav>
+
+<p>
+A small place on the internet for our memories,
+our laughs, and everything that makes us us.
+</p>
+
+<a class="button" href="story.html">Read Our Story</a>
+
+</div>
+
+</body>
+</html>
 
 <body>
 
